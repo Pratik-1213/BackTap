@@ -2,15 +2,13 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import '../services/backtap_channel_service.dart';
 
-/**
- * CalibrationVisualizer provides interactive feedback for tuning tap firmness.
- *
- * Features:
- * 1. Live smartphone graphic with highlighted side fingerprint/power sensor.
- * 2. Radial pulse animations triggering on recognized tap peaks.
- * 3. Real-time lateral force meter (X-Jerk) with threshold marker pin.
- * 4. Presets (Sensitive, Balanced, Firm) and precision slider for fine-tuning.
- */
+/// CalibrationVisualizer provides interactive feedback for tuning tap firmness.
+///
+/// Features:
+/// 1. Live smartphone graphic with highlighted side fingerprint/power sensor.
+/// 2. Radial pulse animations triggering on recognized tap peaks.
+/// 3. Real-time lateral force meter (X-Jerk) with threshold marker pin.
+/// 4. Presets (Sensitive, Balanced, Firm) and precision slider for fine-tuning.
 class CalibrationVisualizer extends StatefulWidget {
   final double sensitivityThreshold;
   final ValueChanged<double> onSensitivityChanged;

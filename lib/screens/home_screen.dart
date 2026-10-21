@@ -5,18 +5,16 @@ import '../services/backtap_channel_service.dart';
 import '../widgets/action_selector_sheet.dart';
 import '../widgets/calibration_visualizer.dart';
 
-/**
- * HomeScreen serves as the primary dashboard for BackTap.
- *
- * Responsibilities:
- * 1. Checks and displays Android Accessibility Service & Battery Optimization status.
- * 2. Provides mapping cards for the two gestures:
- *    - 4x Tap: Screenshot
- *    - 8x Tap: Flashlight
- * 3. Integrates the live Calibration Studio with visual smartphone target.
- * 4. Listens to real-time gesture trigger events from native Kotlin.
- * 5. Clean, accessible light-theme design with zero layout overflow.
- */
+/// HomeScreen serves as the primary dashboard for BackTap.
+///
+/// Responsibilities:
+/// 1. Checks and displays Android Accessibility Service & Battery Optimization status.
+/// 2. Provides mapping cards for the two gestures:
+///    - 4x Tap: Screenshot
+///    - 8x Tap: Flashlight
+/// 3. Integrates the live Calibration Studio with visual smartphone target.
+/// 4. Listens to real-time gesture trigger events from native Kotlin.
+/// 5. Clean, accessible light-theme design with zero layout overflow.
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 

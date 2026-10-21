@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'screens/home_screen.dart';
 
-/**
- * Application Entrypoint for BackTap.
- * Configures system edge-to-edge UI overlay styling and boots the MaterialApp.
- */
+/// Application Entrypoint for BackTap.
+/// Configures system edge-to-edge UI overlay styling and boots the MaterialApp.
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -23,10 +21,8 @@ void main() {
   runApp(const BackTapApp());
 }
 
-/**
- * Root widget configuring Material 3 light theme with soft slate canvas,
- * pure white surfaces, and rich blue/violet accents.
- */
+/// Root widget configuring Material 3 light theme with soft slate canvas,
+/// pure white surfaces, and rich blue/violet accents.
 class BackTapApp extends StatelessWidget {
   const BackTapApp({super.key});
 

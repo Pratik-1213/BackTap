@@ -1,10 +1,8 @@
 import 'dart:async';
 import 'package:flutter/services.dart';
 
-/**
- * Immutable data class carrying real-time accelerometer readings
- * from the native Android sensor listener to Flutter.
- */
+/// Immutable data class carrying real-time accelerometer readings
+/// from the native Android sensor listener to Flutter.
 class SensorSample {
   final double jerkSide;
   final double jerkTotal;
@@ -27,9 +25,7 @@ class SensorSample {
   }
 }
 
-/**
- * Event emitted when a completed multi-tap gesture sequence is recognized.
- */
+/// Event emitted when a completed multi-tap gesture sequence is recognized.
 class GestureTrigger {
   final String type; // QUAD_TAP (4x) or OCTA_TAP (8x)
   final String action;
@@ -49,10 +45,8 @@ class GestureTrigger {
   }
 }
 
-/**
- * BackTapChannelService provides typed asynchronous APIs and event streams
- * to communicate with native Kotlin platform channels.
- */
+/// BackTapChannelService provides typed asynchronous APIs and event streams
+/// to communicate with native Kotlin platform channels.
 class BackTapChannelService {
   static const MethodChannel _methodChannel = MethodChannel('com.backtap.app/channel');
   static const EventChannel _sensorEventChannel = EventChannel('com.backtap.app/sensor_stream');

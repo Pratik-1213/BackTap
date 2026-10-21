@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
 
-/**
- * Multi-tap gesture categories supported by BackTap.
- */
+/// Multi-tap gesture categories supported by BackTap.
 enum TapActionType {
   quadTap, // 4 Taps
   octaTap, // 8 Taps
 }
 
-/**
- * Model representing an assignable system action with icon, title, description,
- * and accent color tokens tailored for high-contrast light theme display.
- */
+/// Model representing an assignable system action with icon, title, description,
+/// and accent color tokens tailored for high-contrast light theme display.
 class TapAction {
   final String id;
   final String title;

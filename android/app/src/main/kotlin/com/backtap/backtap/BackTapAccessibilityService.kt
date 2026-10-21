@@ -2,7 +2,10 @@ package com.backtap.backtap
 
 import android.accessibilityservice.AccessibilityService
 import android.accessibilityservice.FingerprintGestureController
+import android.content.BroadcastReceiver
 import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.content.SharedPreferences
 import android.os.Build
 import android.util.Log
@@ -15,7 +18,8 @@ import android.view.accessibility.AccessibilityEvent
  * 1. Global Action Execution: Only an Accessibility Service can execute system actions
  *    (GLOBAL_ACTION_TAKE_SCREENSHOT, GLOBAL_ACTION_LOCK_SCREEN, GLOBAL_ACTION_NOTIFICATIONS)
  *    when other applications are active on the screen without requiring root or screen-capture prompts.
- * 2. Background Persistence: Android maintains accessibility services continuously with high priority.
+ * 2. Background Persistence: Android maintains accessibility services continuously with high priority
+ *    even when the Flutter UI is closed or swiped away from Recents.
  * 3. Sensor & Hardware Integration: Houses the BackTapDetector and listens to Fingerprint gestures.
  */
 class BackTapAccessibilityService : AccessibilityService(), BackTapListener {
@@ -33,6 +37,21 @@ class BackTapAccessibilityService : AccessibilityService(), BackTapListener {
     private var hapticsEnabled = true
 
     private var fingerprintCallback: FingerprintGestureController.FingerprintGestureCallback? = null
+    private var isReceiverRegistered = false
+
+    // Screen state receiver to ensure sensor is instantly active when screen wakes up
+    private val screenReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent?) {
+            when (intent?.action) {
+                Intent.ACTION_SCREEN_ON, Intent.ACTION_USER_PRESENT -> {
+                    Log.d(tag, "Screen woke up: verifying sensor listener is active")
+                    if (isServiceActive && ::detector.isInitialized && !detector.isRunning()) {
+                        detector.startListening()
+                    }
+                }
+            }
+        }
+    }
 
     companion object {
         const val PREFS_NAME = "BackTapPrefs"
@@ -69,6 +88,18 @@ class BackTapAccessibilityService : AccessibilityService(), BackTapListener {
         }
 
         setupFingerprintGestureController()
+        registerScreenReceiver()
+    }
+
+    private fun registerScreenReceiver() {
+        if (!isReceiverRegistered) {
+            val filter = IntentFilter().apply {
+                addAction(Intent.ACTION_SCREEN_ON)
+                addAction(Intent.ACTION_USER_PRESENT)
+            }
+            registerReceiver(screenReceiver, filter)
+            isReceiverRegistered = true
+        }
     }
 
     /**
@@ -163,6 +194,12 @@ class BackTapAccessibilityService : AccessibilityService(), BackTapListener {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && fingerprintCallback != null) {
             try {
                 fingerprintGestureController.unregisterFingerprintGestureCallback(fingerprintCallback)
+            } catch (_: Exception) {}
+        }
+        if (isReceiverRegistered) {
+            try {
+                unregisterReceiver(screenReceiver)
+                isReceiverRegistered = false
             } catch (_: Exception) {}
         }
         instance = null

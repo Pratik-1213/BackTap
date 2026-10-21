@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import '../models/tap_action.dart';
 import '../services/backtap_channel_service.dart';
 
-/**
- * ActionSelectorSheet is a modern light-theme modal bottom sheet
- * enabling users to customize gesture mappings (4x Tap and 8x Tap)
- * and immediately test any action before saving.
- */
+/// ActionSelectorSheet is a modern light-theme modal bottom sheet
+/// enabling users to customize gesture mappings (4x Tap and 8x Tap)
+/// and immediately test any action before saving.
 class ActionSelectorSheet extends StatelessWidget {
   final String title;
   final String currentActionId;
