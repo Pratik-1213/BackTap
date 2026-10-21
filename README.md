@@ -38,7 +38,7 @@ Tap 1 ──> Tap 2 ──> Tap 3 ──> Tap 4 reached
 flutter run
 ```
 
-1. Open **SideTap**.
-2. Tap **Open Accessibility Settings** and ensure **SideTap** is turned ON.
+1. Open **BackTap**.
+2. Tap **Open Accessibility Settings** and ensure **BackTap** is turned ON.
 3. Tap **4 times quickly** on the side fingerprint/power button to take a screenshot.
 4. Tap **8 times quickly** on the side fingerprint/power button to toggle the flashlight!
