@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BackTap</string>
+    <string name="accessibility_service_description">BackTap enables your device to detect 4x and 8x taps on your phone to take screenshots and toggle flashlight across any app.</string>
+</resources>
