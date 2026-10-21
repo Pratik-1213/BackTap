@@ -1,4 +1,4 @@
-# SideTap 📱⚡
+# BackTap 📱⚡
 
 A powerful Flutter and native Android application designed specifically for devices with a **side-mounted fingerprint sensor and power button**. It enables multi-tap gestures exclusively for **4x Tap** and **8x Tap** to trigger core system functionalities across any active application.
 
