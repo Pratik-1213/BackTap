@@ -32,6 +32,16 @@ Tap 1 ──> Tap 2 ──> Tap 3 ──> Tap 4 reached
 
 ---
 
+## 🧪 Running Automated Tests
+
+BackTap includes unit tests and widget smoke tests verifying gesture catalogue models, case-insensitive ID mappings, fallback safety, and UI components:
+
+```powershell
+flutter test
+```
+
+---
+
 ## 🚀 Running on Your Device
 
 ```powershell
